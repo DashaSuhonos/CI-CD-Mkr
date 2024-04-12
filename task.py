@@ -26,3 +26,17 @@ def calculate_population_change(population_data):
             change = population - prev_population
             population_change[country].append((year, change))
     return population_change
+
+def main():
+    file_path = "population_data.txt"  # Змініть шлях до файлу на свій
+    population_data = read_population_data(file_path)
+    population_change = calculate_population_change(population_data)
+    
+    # Виведення результатів
+    for country, changes in population_change.items():
+        print(f"Зміна населення для {country}:")
+        for year, change in changes:
+            print(f"Рік {year}: зміна населення {change}")
+
+if __name__ == "__main__":
+    main()
