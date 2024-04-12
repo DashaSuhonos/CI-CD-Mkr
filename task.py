@@ -12,3 +12,17 @@ def read_population_data(file_path):
             population_data[country].append((int(year), int(population)))
     return population_data
 
+def calculate_population_change(population_data):
+    """
+    Обчислює зміну населення за роками для кожної країни та повертає словник,
+    де ключ - це назва країни, а значення - список кортежів (рік, зміна населення).
+    """
+    population_change = {}
+    for country, data in population_data.items():
+        population_change[country] = []
+        for i in range(1, len(data)):
+            year, population = data[i]
+            prev_year, prev_population = data[i - 1]
+            change = population - prev_population
+            population_change[country].append((year, change))
+    return population_change
